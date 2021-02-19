@@ -13,12 +13,18 @@ local w, h = mon.getResolution()
 local Green = 0x00AA00
 local Red = 0xAA0000
 local Black = 0x000000
+local Blue = 0x0000AA
+local menuColor = Blue
 
 buttonStatus = nil
 
 function API.clear()
-  mon.setBackground(Black)
+  mon.setBackground(menuColor)
   mon.fill(1, 1, w, h, " ")
+end
+
+function API.newMenu() 
+  API.clearTable()
 end
 
 function API.clearTable()
