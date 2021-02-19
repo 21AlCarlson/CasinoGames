@@ -1,7 +1,6 @@
 local Game = {}
 
 API = require("buttonAPI")
-math = require("Math")
 components = require("components")
 local mon = component.gpu
 
@@ -23,7 +22,6 @@ function Game.Spin()
   API.setTable("Color", Game.PickedColor, 75,85,39,41)
   API.setTable("Parity",Game.PickedParity, 145,155,39,41)
   API.screen()
-  math.random()
 end
 
 function Game.PickedNumber()
