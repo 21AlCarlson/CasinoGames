@@ -2,7 +2,10 @@
 -- SEP 2ND, 2014
 -- code from https://pastebin.com/N7ggD2CN
 
+local HomeScreen = {}
+
 API = require("buttonAPI")
+Game = require("game")
 local event = require("event")
 local computer = require("computer")
 local term = require("term")
@@ -13,11 +16,9 @@ local rs = component.redstone
 local colors = require("colors")
 local side = require("sides")
 
-function API.fillTable()
-  API.setTable("Flash", test1, 10,20,3,5)  
-  API.setTable("Toggle", test2, 22,32,3,5)
-  API.setTable("Free Ram", test3, 10,20,8,10)
-  API.setTable("Reboot", test4, 22,32,8,10)
+local function fillTable()
+  API.setTable("Play Game", PlayGame, 5,15,76,78)
+  API.setTable("Shut down", ShutDown, 145,155,76,78)
   API.screen()
 end
 
@@ -32,8 +33,8 @@ function getClick()
   end
 end
 
-function test1()
-  API.flash("Flash",0.01)
+function PlayGame()
+  Game.start()
 end
 
 function test2()
@@ -50,16 +51,20 @@ function test3()
   term.write("Free Memory: "..computer.freeMemory().." bytes")
 end
 
-function test4()
+function shutDown()
   computer.shutdown(true)
+end
+
+function HomeScreen.setScreen()
+  API.clearTable()
+  fillTable()
+  API.heading("Button API: Created in CC by DW20, ported to OC by MoparDan and revised by TheAnonymousA.")
+  API.label(1,24,"A sample Label.")
 end
 
 term.setCursorBlink(false)
 gpu.setResolution(80, 25)
-API.clear()
-API.fillTable()
-API.heading("Button API Demo! Created in CC by DW20, ported to OC by MoparDan!")
-API.label(1,24,"A sample Label.")
+HomeScreen.setScreen()
 
 while true do
   getClick()
