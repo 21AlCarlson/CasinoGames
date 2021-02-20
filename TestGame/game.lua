@@ -1,42 +1,43 @@
 local Game = {}
 
 API = require("buttonAPI")
-components = require("components")
-local mon = component.gpu
+components = require("component")
+computer = require("computer")
+local mon = components.gpu
 
 local function fillTable() 
-  API.setTable("Spin", Game.Spin, 5,15,76,78)
-  API.setTable("Exit", Game.Exit, 145,155,76,78)
+  API.setTable("Spin", Spin, 5,55,38,48)
+  API.setTable("Exit", Exit, 105,155,38,48)
   API.screen()
 end
 
-function Game.Exit() 
-  HomeScreen.setScreen()
+function Exit() 
+  computer.shutdown(true)
 end
 
-function Game.Spin() 
+function Spin() 
   API.newMenu()
   -- 80 is the center of the screen
   API.heading("Pick a number, color, or parity.")
-  API.setTable("Number", Game.PickedNumber, 5,15,39,41)
-  API.setTable("Color", Game.PickedColor, 75,85,39,41)
-  API.setTable("Parity",Game.PickedParity, 145,155,39,41)
+  API.setTable("Number", PickedNumber, 5,45,24,26)
+  API.setTable("Color", PickedColor, 60,100,24,26)
+  API.setTable("Parity", PickedParity, 115,155,24,26)
   API.screen()
 end
 
-function Game.PickedNumber()
+function PickedNumber()
 end
 
-function Game.PickedColor()
+function PickedColor()
 end
 
-function Game.PickedParity()
+function PickedParity()
 end
 
 function Game.start() 
   API.newMenu()
   fillTable()
 end
-  
-  API.fillTable()
+
+return Game
 
