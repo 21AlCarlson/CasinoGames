@@ -17,8 +17,8 @@ local colors = require("colors")
 local side = require("sides")
 
 local function fillTable()
-  API.setTable("Play Game", PlayGame, 5,15,76,78)
-  API.setTable("Shut down", ShutDown, 145,155,76,78)
+  API.setTable("Play Game", PlayGame, 5,55,39,48)
+  API.setTable("Shut down", ShutDown, 105,155,39,48)
   API.screen()
 end
 
@@ -58,12 +58,11 @@ end
 function HomeScreen.setScreen()
   API.clearTable()
   fillTable()
-  API.heading("Button API: Created in CC by DW20, ported to OC by MoparDan and revised by TheAnonymousA.")
-  API.label(1,24,"A sample Label.")
+  API.heading("Roulette")
 end
 
 term.setCursorBlink(false)
-gpu.setResolution(80, 25)
+gpu.setResolution(160,50)
 HomeScreen.setScreen()
 
 while true do
