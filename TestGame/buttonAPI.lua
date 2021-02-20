@@ -3,7 +3,7 @@
 -- Original code from https://pastebin.com/YUPjgQmd
 
 local API = {}
-local button={}
+local button = {}
 
 local component = require("component")
 local colors = require("colors")
@@ -55,7 +55,7 @@ function API.screen()
   local currColor
   for name,data in pairs(button) do
     local on = data["active"]
-    if on == true then currColor = Green else currColor = Red end
+    if on == true then currColor = Green else currColor = Black end
     API.fill(name, currColor, data)
   end
 end
